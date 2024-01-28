@@ -1,9 +1,11 @@
-FROM openjdk
+FROM maven:3-alpine
 
-COPY ./target/demo-docker*.jar /usr/app/dockerDemo.jar
+COPY pom.xml pipeline/
 
-WORKDIR /usr/app
+WORKDIR pipeline/
 
-EXPOSE 8080
+RUN mvn clean install
 
-CMD ["java","-jar","dockerDemo.jar"]
+EXPOSE 8090
+
+ENTRYPOINT ["java","-jar","/pipeline/target/jenkins-pipeline.jar"]
