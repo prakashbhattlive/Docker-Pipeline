@@ -8,4 +8,4 @@ RUN mvn clean install
 
 EXPOSE 8090
 
-ENTRYPOINT ["java","-jar","/pipeline/target/jenkins-pipeline.jar"]
+ENTRYPOINT ["java","-jar", "/pipeline/target/jenkins-pipeline.jar"]
